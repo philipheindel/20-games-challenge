@@ -1,39 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvwxjbjn41b5h"]
+[gd_scene load_steps=5 format=3 uid="uid://dvwxjbjn41b5h"]
 
 [ext_resource type="Texture2D" uid="uid://ds4xl2medny7u" path="res://black_square.png" id="1_ildh6"]
 [ext_resource type="PackedScene" uid="uid://chfnhbbtg7x3y" path="res://paddle.tscn" id="2_p2hei"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w737r"]
-size = Vector2(100, 2.46913)
+[ext_resource type="Script" path="res://paddle.gd" id="3_8tw8m"]
+[ext_resource type="PackedScene" uid="uid://b0368fdulr248" path="res://wall.tscn" id="4_vi0ww"]
 
 [node name="Sprite2D" type="Sprite2D"]
 position = Vector2(576, 324)
 scale = Vector2(11.52, 6.48)
 texture = ExtResource("1_ildh6")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -48.7654)
-shape = SubResource("RectangleShape2D_w737r")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
-offset_left = -50.0
-offset_top = -1.0
-offset_right = 50.0
-offset_bottom = 1.0
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 48.7654)
-shape = SubResource("RectangleShape2D_w737r")
-
-[node name="ColorRect" type="ColorRect" parent="CollisionShape2D2"]
-offset_left = -50.0
-offset_top = -1.0
-offset_right = 50.0
-offset_bottom = 1.0
-metadata/_edit_use_anchors_ = true
+script = ExtResource("3_8tw8m")
 
 [node name="Paddle" parent="." instance=ExtResource("2_p2hei")]
-position = Vector2(48.0035, 3.7037)
+position = Vector2(-47.3958, -1.08025)
+script = ExtResource("3_8tw8m")
+
+[node name="Wall_Top" parent="." instance=ExtResource("4_vi0ww")]
+position = Vector2(-1.63168e-06, -49.3827)
+scale = Vector2(0.087, 0.087)
+
+[node name="Wall_Bottom" parent="." instance=ExtResource("4_vi0ww")]
+position = Vector2(-1.13249e-06, 49.3827)
+scale = Vector2(0.087, 0.087)
